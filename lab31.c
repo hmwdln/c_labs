@@ -11,7 +11,7 @@ int main()
     {
         if (0 <= x && x <= 1.5)
             f = pow(2, x) - 2 + pow(x, 2);
-        else if (1.5 < x && x <= 3.0)
+        else
             f = sqrt(x) * exp(-pow(x, 2));
         printf("x = %lf\t f(x) = %lf\n", x, f);
         x += h;
