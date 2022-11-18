@@ -63,12 +63,15 @@ int main()
     }
 
     func_fill(n, m, a);
+    printf("Исходная матрица: \n");
     print_matrix(n, m, a);
     printf("\n");
     func_transpose(n, m, a, t);
+    printf("Транспонированная матрица: \n");
     print_matrix(m, n, t);
     printf("\n");
     func_product(n, m, a, t, p);
+    printf("Произведение матриц: \n");
     print_matrix(n, n, p);
 
     free(a);
