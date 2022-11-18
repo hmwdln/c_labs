@@ -66,7 +66,7 @@ int main()
     printf("\n");
     func_product(n, m, a, t, p);
     printf("Произведение матриц: \n");
-    print_matrix(n, n, p);
+    print_matrix(m, m, p);
 
     return 0;
 }
