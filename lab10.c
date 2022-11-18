@@ -6,7 +6,7 @@ void func_fill(int n, int m, int *a)
 {
     for (int i = 0; i < n; i++)
         for(int j = 0; j < m; j++)
-            a[i * m + j] = rand() % 40 - 20;
+            a[i * m + j] = rand() % 30 - 15;
 }
 
 void print_matrix(int n, int m, int *a)
@@ -14,7 +14,7 @@ void print_matrix(int n, int m, int *a)
     for (int i = 0; i < n; i++)
     {
         for (int j = 0; j < m; j++)
-            printf("%d ", a[i * m + j]);
+            printf("% 5d ", a[i * m + j]);
         printf("\n");
     }
 }
@@ -32,14 +32,14 @@ void func_transpose(int n, int m, int *a, int *t)
 
 void func_product(int n, int m, int *a, int *t, int *p)
 {
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < m; i++)
     {
-        for (int j = 0; j < n; j++)
+        for (int j = 0; j < m; j++)
         {
             int sum = 0;
-            for (int k = 0; k < m; k++)
-                sum += a[i * m + k] * t[k * n + j];
-            p[i * n + j] = sum;
+            for (int k = 0; k < n; k++)
+                sum += a[i * n + k] * t[k * m + j];
+            p[i * m + j] = sum;
         }
     }
 }
@@ -72,7 +72,7 @@ int main()
     printf("\n");
     func_product(n, m, a, t, p);
     printf("Произведение матриц: \n");
-    print_matrix(n, n, p);
+    print_matrix(m, m, p);
 
     free(a);
     free(t);
