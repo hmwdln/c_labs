@@ -60,12 +60,12 @@ int main()
     printf("Исходная матрица: \n");
     print_matrix(n, m, a);
     printf("\n");
-    printf("Транспонированная матрица: \n");
     func_transpose(n, m, a, t);
+    printf("Транспонированная матрица: \n");
     print_matrix(m, n, t);
     printf("\n");
-    printf("Произведение матриц: \n");
     func_product(n, m, a, t, p);
+    printf("Произведение матриц: \n");
     print_matrix(n, n, p);
 
     return 0;
