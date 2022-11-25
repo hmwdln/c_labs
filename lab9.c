@@ -21,8 +21,8 @@ int find_len_without_repeats(int i, int len, char str[])
 
 int main()
 {
-    char str[250];
-    scanf("%s", str);
+    char str[256];
+    scanf("%[^\n]", str);
     int len = strlen(str);
     int max_len = 0;
     int current_len;
@@ -39,5 +39,5 @@ int main()
     char substr[256];
     strncpy(substr, str + max_start, max_len);
     substr[max_len] = '\0';
-    printf("%s, %s\n", str, substr);
+    printf("%s\n", substr);
 }
