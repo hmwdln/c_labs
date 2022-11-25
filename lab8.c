@@ -66,19 +66,20 @@ int main()
                 ctrl_2 = a;
                 __fpurge(stdin);
                 mode = old_mode;
-                if (ctrl_1 == 0x5b && ctrl_2 == 0x46)
-                    break;
+                if (ctrl_1 == 0x5b)
+                    if (ctrl_2 == 0x46)
+                        break;
                 continue;
             }
             count++;
         }
         
-        if (!(isdigit(a) || a == '-' || a == '.' || a == 'e') && mode != control)
+        if (!(isdigit(a) || a == '-' || a == '.' || a == 'e' || a == '+') && mode != control)
             sym_valid = 0;
         
         if (mode == before_entering)
         {
-            if (!(isdigit(a) || a == '-'))
+            if (!(isdigit(a) || a == '-' || a == '+'))
             {
                 sym_valid = 0;
             }
@@ -92,7 +93,7 @@ int main()
 
         if (mode == first)
         {
-            if(!(isdigit(a) || a == '.' || a == 'e'))
+            if(!(isdigit(a) || a == '.' || a == 'e' || a == '+'))
             {
                 sym_valid = 0;
             }
@@ -137,7 +138,7 @@ int main()
 
         if (mode == first_symbol_exponent)
         {
-            if(!(isdigit(a) || a == '-'))
+            if(!(isdigit(a) || a == '-' || a == '+'))
             {
                 sym_valid = 0;
             }
@@ -157,7 +158,7 @@ int main()
 
     }   
 
-    if (sym_valid)
+    if (mode != before_entering && (sym_valid == 1) && count != 0)
     {
         printf("\nПоследовательность является вещественным числом\n");
     }
