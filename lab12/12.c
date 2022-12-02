@@ -113,6 +113,7 @@ int load(sd_t data[])
     FILE* file = fopen("student_data.txt", "r");
     int size;
     fscanf(file, "%d\n", &size);
+
     for (int i = 0; i < size; i++)
     {
         char* group = malloc(100);
@@ -134,6 +135,7 @@ int load(sd_t data[])
         data[i].full_group = group;
         data[i].exams_marks = exams_marks;
     }
+
     fclose(file);
     return size;
 }
@@ -155,6 +157,8 @@ int main()
 {
     sd_t data[100];
     int data_size = load(data);
+    int changed;
+    int removed;
 
     while (1)
     {
@@ -176,15 +180,14 @@ int main()
                 excellent_marks(data, data_size);
                 break;
             case '4':
-                int change;
+                all_student_data(data, data_size);
                 printf("Номер изменяемого студента: ");
-                scanf("%d", &change);
-                if (change < data_size && change >= 0)
-                    change_student(&data[change]);
+                scanf("%d", &changed);
+                if (changed < data_size && changed >= 0)
+                    change_student(&data[changed]);
                 break;
             case '5':
                 all_student_data(data, data_size);
-                int removed;
                 printf("Номер удаляемого студента: ");
                 scanf("%d", &removed);
                 if (removed < data_size && removed >= 0)
